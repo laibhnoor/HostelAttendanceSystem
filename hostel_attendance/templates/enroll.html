@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section grid-two">
+	<div>
+		<h2>Student Enrollment</h2>
+		<form id="enroll-form">
+			<label for="student_id">Student ID</label>
+			<input id="student_id" name="student_id" required />
+
+			<label for="name">Full Name</label>
+			<input id="name" name="name" required />
+
+			<label for="hostel">Hostel</label>
+			<select id="hostel" name="hostel" required>
+				{% for hostel in hostels %}
+				<option value="{{ hostel }}" {% if hostel == default_hostel %}selected{% endif %}>
+					{{ hostel }}
+				</option>
+				{% endfor %}
+			</select>
+		</form>
+		<div class="alert" id="alert-box">Ready to capture samples.</div>
+		<p>Captured: <strong id="capture-status">0</strong> / {{ enrollment_samples }}</p>
+	</div>
+
+	<div>
+		<h2>Camera Preview</h2>
+		<video id="video" autoplay muted playsinline></video>
+		<canvas id="canvas" width="{{ video_width }}" height="{{ video_height }}" hidden></canvas>
+	</div>
+</section>
+{% endblock %}

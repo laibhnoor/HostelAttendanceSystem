@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section grid-two">
+	<div>
+		<h2>Recognition Control</h2>
+		<label for="hostel">Current Hostel</label>
+		<select id="hostel" name="hostel" required>
+			{% for hostel in hostels %}
+			<option value="{{ hostel }}" {% if hostel == default_hostel %}selected{% endif %}>
+				{{ hostel }}
+			</option>
+			{% endfor %}
+		</select>
+		<div class="alert" id="alert-box">Waiting for faces...</div>
+		<p class="status-pill">Live alerts enabled</p>
+	</div>
+
+	<div>
+		<h2>Live Camera</h2>
+		<video id="video" autoplay muted playsinline></video>
+		<canvas id="canvas" width="{{ video_width }}" height="{{ video_height }}" hidden></canvas>
+	</div>
+</section>
+{% endblock %}

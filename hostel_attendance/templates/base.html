@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Space+Grotesk:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body
+    data-page="{{ page }}"
+    data-interval="{{ snapshot_interval_ms }}"
+    data-width="{{ video_width }}"
+    data-height="{{ video_height }}"
+    data-quality="{{ jpeg_quality }}"
+  >
+    <header>
+      <h1>{{ heading }}</h1>
+      <p>{{ subtitle }}</p>
+      <nav>
+        <a href="/">Dashboard</a>
+        <a href="/enroll">Enroll</a>
+        <a href="/recognize">Recognize</a>
+      </nav>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+    <div class="footer">Hostel Attendance — realtime vision dashboard</div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
